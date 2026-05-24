@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Robo Learn</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    overflow-x:hidden;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-transparent{
+    position:fixed;
+    top:12px;
+    left:12px;
+    z-index:1000;
+}
+
+.logo-transparent img{
+    height:60px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+    position:relative;
+    height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("ababa.webp");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+
+    padding-left:100px;
+
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+    z-index:5;
+}
+
+.hero h1{
+    font-size:80px;
+    line-height:1.1;
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.hero p{
+    font-size:24px;
+    margin-bottom:40px;
+    line-height:1.6;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:18px 40px;
+    border:none;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.blue-btn{
+    background:#2f80ed;
+    color:white;
+}
+
+.yellow-btn{
+    background:#f2c319;
+    color:black;
+}
+
+/* =========================
+   WAVE
+========================= */
+
+.custom-wave{
+    position:absolute;
+    bottom:-1px;
+    left:0;
+    width:100%;
+    line-height:0;
+    z-index:2;
+}
+
+.custom-wave svg{
+    display:block;
+    width:100%;
+    height:95px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding:40px 10%;
+}
+
+.features{
+    text-align:center;
+}
+
+/* =========================
+   IMPACT SECTION
+========================= */
+
+.impact-section{
+    width:100%;
+    padding:100px 8%;
+    background:#f5f5f5;
+}
+
+.impact-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+    flex-wrap:nowrap;
+}
+
+/* IMAGE */
+
+.impact-image-box{
+    position:relative;
+    width:50%;
+}
+
+.impact-image-box img{
+    width:100%;
+    border-radius:35px;
+    display:block;
+}
+
+/* DOTS */
+
+.impact-dots{
+    position:absolute;
+    bottom:-25px;
+    left:-25px;
+
+    display:grid;
+    grid-template-columns:repeat(4,10px);
+    gap:12px;
+}
+
+.impact-dots span{
+    width:6px;
+    height:6px;
+    background:#999;
+    border-radius:50%;
+}
+
+/* TEXT */
+
+.impact-text{
+    width:50%;
+}
+
+.impact-small-title{
+    color:#2f80ed;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.impact-text h1{
+    font-size:75px;
+    line-height:1.1;
+    color:#00255b;
+    margin-bottom:25px;
+    font-weight:900;
+}
+
+.impact-text p{
+    font-size:22px;
+    line-height:1.8;
+    color:#333;
+}
+
+/* =========================
+   STATS SECTION
+========================= */
+
+.stats-section{
+    width:100%;
+    padding:80px 5%;
+    background:#f5f5f5;
+}
+
+.stats-container{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.stat-box{
+    flex:1;
+    min-width:220px;
+    text-align:center;
+}
+
+.circle{
+    width:190px;
+    height:190px;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto;
+
+    font-size:60px;
+    font-weight:bold;
+}
+
+/* COLORS */
+
+.circle.blue{
+    background:#dfe9f7;
+    color:#2f80ed;
+}
+
+.circle.yellow{
+    background:#f6f0d9;
+    color:#f2c319;
+}
+
+.circle.cyan{
+    background:#dff4f4;
+    color:#47c7c7;
+}
+
+.circle.gray{
+    background:#ececef;
+    color:#1f3558;
+}
+
+.circle.blue2{
+    background:#dfe9f7;
+    color:#2f80ed;
+}
+
+.stat-box p{
+    margin-top:25px;
+    font-size:20px;
+    line-height:1.6;
+    color:#1f3558;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1100px){
+
+    .hero{
+        padding:40px;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .impact-container{
+        flex-direction:column;
+    }
+
+    .impact-image-box,
+    .impact-text{
+        width:100%;
+    }
+
+    .impact-text h1{
+        font-size:50px;
+    }
+
+    .impact-text p{
+        font-size:18px;
+    }
+
+    .stats-container{
+        justify-content:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     LOGO & NAVIGATION
+========================= -->
+
+<div class="logo-transparent" style="display: flex; align-items: center; gap: 20px;">
+    <img src="444.png" alt="Logo">
+    <a href="School%20%20Project.html" style="color: white; text-decoration: none; padding: 8px 15px; background: rgba(255,255,255,0.2); border-radius: 8px; font-weight: bold; transition: all 0.3s;">← Back to Home</a>
+</div>
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+STEAM Success <br>
+Stories
+</h1>
+
+<p>
+Learn Robotics & AI, Arduino & Future Technology
+with live practical projects.
+</p>
+
+<div class="buttons">
+
+<a href="ss.html" class="btn blue-btn">
+Explore More
+</a>
+
+<a href="contact-page/index.html" class="btn yellow-btn">
+Contact Us
+</a>
+
+</div>
+
+</div>
+
+<!-- =========================
+     WAVE SVG
+========================= -->
+
+<div class="custom-wave">
+
+<svg 
+viewBox="0 0 1440 120" 
+preserveAspectRatio="none">
+
+<path 
+fill="#f5f5f5"
+
+d="
+M0,40
+C80,90 160,0 240,40
+C320,80 400,0 480,40
+C560,80 640,0 720,40
+C800,80 880,0 960,40
+C1040,80 1120,0 1200,40
+C1280,80 1360,0 1440,40
+L1440,120
+L0,120
+Z">
+</path>
+
+</svg>
+
+</div>
+
+</section>
+
+<!-- =========================
+     PROJECT BUTTON
+========================= -->
+
+<section class="section">
+
+<div class="features">
+
+<div class="buttons">
+
+<a href="robotics.html" class="btn blue-btn">
+Explore Our Projects
+</a>
+
+<a href="drone.html" class="btn blue-btn">
+Drone Projects
+</a>
+
+
+
+<a href="p.html" class="btn blue-btn">
+🚀 Upload Projects
+</a>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     IMPACT SECTION
+========================= -->
+
+<section class="impact-section">
+
+<div class="impact-container">
+
+<!-- IMAGE -->
+
+<div class="impact-image-box">
+
+<img src="yyyy.jpeg" alt="Student">
+
+<div class="impact-dots">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+</div>
+
+<!-- TEXT -->
+
+<div class="impact-text">
+
+<div class="impact-small-title">
+PROVEN SUCCESS
+</div>
+
+<h1>
+How Robo Learn <br>
+Impacts Education
+</h1>
+
+<p>
+Outcomes show a significantly heightened student
+interest in pursuing additional science and technology
+classes and increased desire to participate in creative
+design, assembly, and technological activities.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     STATS SECTION
+========================= -->
+
+<section class="stats-section">
+
+<div class="stats-container">
+
+<!-- BOX 1 -->
+
+<div class="stat-box">
+
+<div class="circle blue">
+33%
+</div>
+
+<p>
+Student confidence in building and creating increased
+by more than 30%
+</p>
+
+</div>
+
+<!-- BOX 2 -->
+
+<div class="stat-box">
+
+<div class="circle yellow">
++15%
+</div>
+
+<p>
+Excitement about STEAM projects exceeded expectations
+by more than 15%
+</p>
+
+</div>
+
+<!-- BOX 3 -->
+
+<div class="stat-box">
+
+<div class="circle cyan">
+90%
+</div>
+
+<p>
+Students indicated they would like to take another
+Robo Learn program
+</p>
+
+</div>
+
+<!-- BOX 4 -->
+
+<div class="stat-box">
+
+<div class="circle gray">
++20%
+</div>
+
+<p>
+Science subject interest rose by 20%
+</p>
+
+</div>
+
+<!-- BOX 5 -->
+
+<div class="stat-box">
+
+<div class="circle blue2">
++14%
+</div>
+
+<p>
+Technology subject interest increased by 14%
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>

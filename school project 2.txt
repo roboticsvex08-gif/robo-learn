@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robo Learn</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      color:#222;
+    }
+
+    header{
+      background:#0f172a;
+      color:white;
+      text-align:center;
+      padding:25px;
+    }
+
+    header h1{
+      font-size:40px;
+      margin-bottom:10px;
+    }
+
+    header p{
+      font-size:18px;
+      color:#cbd5e1;
+    }
+
+    .courses{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      padding:40px;
+    }
+
+    .card{
+      background:white;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+      text-align:center;
+    }
+
+    .card-content h2{
+      margin-bottom:10px;
+      color:#0f172a;
+    }
+
+    .card-content p{
+      color:#555;
+      font-size:15px;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      background:#0f172a;
+      color:white;
+      margin-top:20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Robo Learn</h1>
+    <p>Learn Robotics, Coding & AI</p>
+  </header>
+
+  <section class="courses">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc" alt="Arduino Course">
+      <div class="card-content">
+        <h2>Arduino Robotics</h2>
+        <p>Learn sensors, motors and robot making using Arduino.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4" alt="Coding Course">
+      <div class="card-content">
+        <h2>Python Coding</h2>
+        <p>Start programming with fun and beginner-friendly Python projects.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e" alt="AI Course">
+      <div class="card-content">
+        <h2>Artificial Intelligence</h2>
+        <p>Build smart AI projects like face detection and chatbots.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a" alt="Web Development">
+      <div class="card-content">
+        <h2>Web Development</h2>
+        <p>Create beautiful websites using HTML, CSS and JavaScript.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Robo Learn | All Rights Reserved
+  </footer>
+
+</body>
+</html>

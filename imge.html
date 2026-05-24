@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Project Gallery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --bg:#071020;
+      --card-bg:#071a2b;
+      --accent:#2dd4f7;
+      --muted:#9aa8bd;
+      --glass: rgba(2,6,23,0.45);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg,var(--bg) 0%, #071426 100%);
+      color: #e6eef8;
+      padding:28px;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .page-header{text-align:center;margin-bottom:22px}
+    .page-header h1{font-size:2.8rem;color:var(--accent);letter-spacing:0.6px}
+    .page-header p{color:var(--muted);margin-top:6px}
+
+    .back-link{display:inline-flex;align-items:center;gap:10px;margin:12px auto 28px;padding:12px 20px;border-radius:999px;background:linear-gradient(135deg,var(--accent),#0ea5e9);color:#021025;text-decoration:none;font-weight:700}
+
+
+    /* Gallery layout: vertical list of cinematic hero cards (full-bleed) */
+    .gallery{display:flex;flex-direction:column;gap:28px;margin:0 auto}
+
+    /* Make each card full-bleed across the viewport while keeping a centered inner container for rounded corners */
+    .showcase-card{position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw;display:block}
+
+    .showcase-inner{position:relative;max-width:1200px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(2,6,23,0.7);min-height:360px;background:#000}
+
+    /* background image layer that scales on hover */
+    .showcase-inner .bg{position:absolute;inset:0;background-size:cover;background-position:center center;transition:transform 0.9s cubic-bezier(.2,.8,.2,1),filter 0.6s,opacity 0.6s;transform-origin:center;will-change:transform;opacity:1;transform:scale(1.02)}
+
+    /* dark overlay for readability */
+    .showcase-inner::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0.12) 0%, rgba(2,6,23,0.55) 75%);mix-blend-mode:normal;pointer-events:none;z-index:3}
+
+    /* cinematic side fade + subtle blur for depth */
+    .showcase-inner::after{content:'';position:absolute;left:0;top:0;height:100%;width:40%;background:linear-gradient(90deg, rgba(2,6,23,0.9) 0%, rgba(2,6,23,0.25) 45%, rgba(2,6,23,0.0) 100%);pointer-events:none;filter:blur(8px);opacity:0.95;z-index:4}
+
+    .showcase-inner .content{position:relative;z-index:6;display:flex;flex-direction:column;justify-content:flex-end;padding:34px 44px;color:#f8fbff;max-width:68%;gap:10px}
+
+    .showcase-inner .accent-glow{position:absolute;right:-20%;top:-10%;width:60%;height:140%;background:radial-gradient(closest-side, rgba(45,212,247,0.07), transparent 35%);mix-blend-mode:screen;pointer-events:none;z-index:2}
+
+    /* reveal states */
+    .showcase-inner .bg.loaded{opacity:1;transform:scale(1.02)}
+    .showcase-inner.visible .bg{opacity:1;transform:scale(1.02)}
+    .showcase-inner:hover .bg{transform:scale(1.08)}
+
+    .showcase-card h2{font-size:2.1rem;margin:0 0 6px;font-weight:800;letter-spacing:0.4px}
+    .showcase-card p{margin:0;color:var(--muted);line-height:1.5;font-size:1rem}
+
+    .showcase-card .meta{display:flex;gap:12px;align-items:center;margin-top:12px}
+    .showcase-card .pill{background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:999px;color:var(--muted);font-weight:600;font-size:0.9rem}
+
+    .showcase-card:hover .bg{transform:scale(1.08)}
+    .showcase-card:hover{transform:translateY(-6px)}
+
+    /* Small decorative glow */
+    .showcase-card .accent-glow{position:absolute;right:-20%;top:-10%;width:60%;height:140%;background:radial-gradient(closest-side, rgba(45,212,247,0.07), transparent 35%);mix-blend-mode:screen;pointer-events:none}
+
+    /* Responsive adjustments */
+    @media (max-width:900px){
+      .showcase-card{min-height:300px}
+      .showcase-card .content{max-width:74%;padding:28px}
+      .showcase-card h2{font-size:1.6rem}
+    }
+
+    @media (max-width:640px){
+      body{padding:16px}
+      .page-header h1{font-size:1.9rem}
+      .gallery{gap:18px}
+      .showcase-inner{min-height:220px;border-radius:14px}
+      .showcase-inner::after{width:50%}
+      .showcase-inner .content{max-width:100%;padding:18px}
+      .showcase-inner h2{font-size:1.25rem}
+      .showcase-inner p{font-size:0.95rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <h1>Our Project Gallery</h1>
+   
+  </div>
+
+  <a href="School%20%20Project.html" class="back-link"><i class="fas fa-arrow-left" style="margin-right: 10px"></i>Back to Home</a>
+
+  <section class="gallery">
+    <article class="showcase-card" aria-label="School Project Team">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('555.png')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>School Project Team</h2>
+          <p>This image represents a school project group working together on a bright new idea. The team is planning, designing, and sharing knowledge to build something useful.</p>
+          <div class="meta"><span class="pill">Teamwork • Design</span></div>
+        </div>
+      </div>
+      <img src="./555.png" alt="School Project" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Company Workshop">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('kkk.png')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>Company Workshop</h2>
+          <p>A corporate training session where employees learn new skills and develop professional solutions. The focus is on teamwork, planning, and improving business systems.</p>
+          <div class="meta"><span class="pill">Workshop • Training</span></div>
+        </div>
+      </div>
+      <img src="./kkk.png" alt="Company Workshop" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Community Learning Hub">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('ggg.png')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>Community Learning Hub</h2>
+          <p>A community center where students and mentors collaborate on technology and education. This image shows a friendly environment for shared learning and support.</p>
+          <div class="meta"><span class="pill">Community • Education</span></div>
+        </div>
+      </div>
+      <img src="./ggg.png" alt="Community Learning" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Educational Studio">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('eee.png')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>Educational Studio</h2>
+          <p>An education-focused workspace where teachers and students create interactive lessons and digital projects. The studio is bright, organized, and ready for creative work.</p>
+          <div class="meta"><span class="pill">Studio • Learning</span></div>
+        </div>
+      </div>
+      <img src="./eee.png" alt="Educational Studio" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="University Collaboration">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('uu.png')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>University Collaboration</h2>
+          <p>University students collaborate on research and development for real-world problems. This picture represents innovation, study, and future career preparation.</p>
+          <div class="meta"><span class="pill">Research • Collaboration</span></div>
+        </div>
+      </div>
+      <img src="./uu.png" alt="University Collaboration" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Innovation Office">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('images/aaa.png')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>Innovation Office</h2>
+          <p>A modern office space where a company explores new technologies and business ideas. The team works on product development, presentations, and strategic planning.</p>
+          <div class="meta"><span class="pill">Innovation • Product</span></div>
+        </div>
+      </div>
+      <img src="./images/aaa.png" alt="Innovation Office" loading="lazy" style="display:none">
+    </article>
+    <article class="showcase-card" aria-label="Future Improvements">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('a.jpeg')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>Future Improvements</h2>
+          <p>A project slide showing future improvements, including AI vision, GPS connectivity, and upgraded hardware design.</p>
+          <div class="meta"><span class="pill">AI • Hardware</span></div>
+        </div>
+      </div>
+      <img src="./a.jpeg" alt="Presentation Slide 1" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Live Demo Setup">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('b.jpeg')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>Live Demo Setup</h2>
+          <p>A presentation image of the demo setup in progress, with the prototype being prepared for a live classroom demonstration.</p>
+          <div class="meta"><span class="pill">Demo • Prototype</span></div>
+        </div>
+      </div>
+      <img src="./b.jpeg" alt="Presentation Slide 2" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="How It Works">
+      <div class="showcase-inner">
+        <div class="bg" style="background-image:url('c.jpeg')"></div>
+        <div class="accent-glow"></div>
+        <div class="content">
+          <h2>How It Works</h2>
+          <p>This slide explains the hardware components and decision logic used by the system, such as Arduino, flame sensors, and pump control.</p>
+          <div class="meta"><span class="pill">Architecture • Flow</span></div>
+        </div>
+      </div>
+      <img src="./c.jpeg" alt="Presentation Slide 3" loading="lazy" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Problem Statement">
+      <div class="showcase-inner">
+      <div class="bg" style="background-image:url('d.jpeg')"></div>
+      <div class="accent-glow"></div>
+      <div class="content">
+        <h2>Problem Statement</h2>
+        <p>A presentation slide that describes the problem statement, highlighting the dangers of fast-spreading fire and the need for rapid detection.</p>
+        <div class="meta"><span class="pill">Safety • Detection</span></div>
+      </div>
+      </div>
+      <img src="./d.jpeg" alt="Presentation Slide 4" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Design Overview">
+      <div class="showcase-inner">
+      <div class="bg" style="background-image:url('e.jpeg')"></div>
+      <div class="accent-glow"></div>
+      <div class="content">
+        <h2>Design Overview</h2>
+        <p>An image that shows the system design and workflow, demonstrating how each component works together for the fire detection and response process.</p>
+        <div class="meta"><span class="pill">Design • Workflow</span></div>
+      </div>
+      </div>
+      <img src="./e.jpeg" alt="Presentation Slide 5" style="display:none">
+    </article>
+
+    <article class="showcase-card" aria-label="Team Presentation">
+      <div class="showcase-inner">
+      <div class="bg" style="background-image:url('f.jpeg')"></div>
+      <div class="accent-glow"></div>
+      <div class="content">
+        <h2>Team Presentation</h2>
+        <p>A final slide from the presentation that highlights team roles, the project demonstration, and the next steps for growth and improvement.</p>
+        <div class="meta"><span class="pill">Presentation • Next Steps</span></div>
+      </div>
+      </div>
+      <img src="./f.jpeg" alt="Presentation Slide 6" style="display:none">
+    </article>
+  </section>
+</body>
+</html>

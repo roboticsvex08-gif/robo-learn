@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="device-width, initial-scale=1.0"/>
+  <title>Robo Learn - Future of Tech Education</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body{
+      background: linear-gradient(135deg, #0a0e27 0%, #16213e 50%, #0f3460 100%);
+      color:#e0e0e0;
+      min-height: 100vh;
+    }
+
+    header{
+      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+      color:white;
+      text-align:center;
+      padding:60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    header h1{
+      font-size:55px;
+      margin-bottom:15px;
+      font-weight: 800;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+
+    header p{
+      font-size:20px;
+      color:#ffffff;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro-section {
+          .robotics-btn {
+            display: inline-block;
+            margin: 30px auto 0 auto;
+            padding: 16px 38px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #00d4ff 0%, #0099ff 100%);
+            border: none;
+            border-radius: 32px;
+            box-shadow: 0 4px 24px #00d4ff44;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            text-decoration: none;
+          }
+          .robotics-btn:hover {
+            background: linear-gradient(90deg, #0099ff 0%, #00d4ff 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px #00d4ff44;
+          }
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(0, 212, 255, 0.1);
+      border-radius: 15px;
+      margin: 30px 20px;
+      border: 2px rgba(0, 212, 255, 0.3);
+    }
+
+    .intro-section p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+
+    .courses{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+      padding:50px 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card{
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 50, 80, 0.8) 100%);
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00d4ff, #0099ff);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 212, 255, 0.25);
+      border-color: rgba(0, 212, 255, 0.6);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .card-icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #00d4ff, #0099ff);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+      z-index: 2;
+    }
+
+    .card-content{
+      padding:28px 20px;
+      text-align:center;
+    }
+
+    .card-content h2{
+      margin-bottom:12px;
+      color: #00d4ff;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .card-content p{
+      color:#a0aec0;
+      font-size:15px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 15px;
+      border-top: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    .skill-badge {
+      font-size: 12px;
+      color: #00d4ff;
+      background: rgba(0, 212, 255, 0.1);
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+    }
+
+    .footer{
+      text-align:center;
+      padding:40px 20px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);
+      color:#cbd5e1;
+      margin-top:50px;
+      border-top: 2px solid rgba(0, 212, 255, 0.3);
+    }
+
+    .footer p {
+      margin: 10px 0;
+    }
+
+    .footer-social {
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      color: #00d4ff;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: #00ffff;
+      transform: scale(1.3);
+    }
+
+    .action-section {
+      text-align: center;
+      margin: 25px auto;
+    }
+
+    .button-link {
+      display: inline-block;
+      padding: 18px 32px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 18px 35px rgba(0, 212, 255, 0.18);
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .button-link:hover {
+      transform: translateY(-3px);
+      opacity: 0.95;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 35px;
+      }
+
+      .courses {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+      }
+
+      .intro-section {
+        margin: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="padding: 15px 20px; background: rgba(0, 212, 255, 0.1); text-align: center;">
+    <a href="School%20%20Project.html" style="color: #00d4ff; text-decoration: none; padding: 8px 15px; background: rgba(0, 212, 255, 0.2); border-radius: 8px; font-weight: bold; display: inline-block; transition: all 0.3s;">← Back to Home</a>
+  </div>
+
+  <header>
+    <h1>⚡ ROBO LEARN</h1>
+    <p>Master the Future of Technology & Innovation</p>
+  </header>
+
+  <div style="text-align:center;">
+    <a href="robotics.html" class="robotics-btn">Go to Robotics</a>
+  </div>
+
+  <div class="intro-section">
+    <p>🚀 Welcome to the ultimate learning platform for robotics, AI, coding, and advanced technology. Choose from 15+ cutting-edge courses designed by industry experts to transform you into a tech innovator.</p>
+  </div>
+
+  <div class="action-section">
+    <a href="imge.html" class="button-link">View Image Gallery</a>
+  </div>
+
+  <section class="courses">
+
+    <div class="card" data-card-type="arduino">
+      <div class="card-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=compress&cs=tinysrgb&w=600" alt="Arduino Course">
+        <div class="card-icon"><i class="fas fa-microchip"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Arduino Robotics</h2>
+        <p>Learn sensors, motors and advanced robot making using Arduino microcontrollers.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Beginner</span>
+          <span class="skill-badge">Hardware</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="programming">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Python Coding">
+        <div class="card-icon"><i class="fas fa-python"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Python Coding</h2>
+        <p>Master Python programming with fun projects from basics to advanced concepts.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Beginner</span>
+          <span class="skill-badge">Programming</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="ai">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/8386370/pexels-photo-8386370.jpeg?auto=compress&cs=tinysrgb&w=600" alt="AI Course">
+        <div class="card-icon"><i class="fas fa-brain"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Artificial Intelligence</h2>
+        <p>Build intelligent systems with face detection, chatbots, and machine learning models.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Advanced</span>
+          <span class="skill-badge">AI/ML</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="web">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Web Development">
+        <div class="card-icon"><i class="fas fa-code"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Web Development</h2>
+        <p>Create stunning responsive websites using HTML, CSS, JavaScript and modern frameworks.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Beginner</span>
+          <span class="skill-badge">Frontend</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="iot">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=600" alt="IoT Course">
+        <div class="card-icon"><i class="fas fa-wifi"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Internet of Things (IoT)</h2>
+        <p>Connect smart devices and build IoT projects with cloud integration and real-time data.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Intermediate</span>
+          <span class="skill-badge">IoT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="programming">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&w=600" alt="JavaScript">
+        <div class="card-icon"><i class="fas fa-js"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>JavaScript Mastery</h2>
+        <p>Deep dive into JavaScript for dynamic web applications, animations, and interactive features.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Intermediate</span>
+          <span class="skill-badge">Web</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="data">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/3587620/pexels-photo-3587620.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Data Science">
+        <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Data Science & Analytics</h2>
+        <p>Analyze big data, create visualizations, and make data-driven decisions with Python.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Advanced</span>
+          <span class="skill-badge">Data</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="mobile">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mobile Apps">
+        <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Mobile App Development</h2>
+        <p>Build iOS and Android apps using React Native and modern mobile technologies.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Intermediate</span>
+          <span class="skill-badge">Mobile</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="cloud">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cloud Computing">
+        <div class="card-icon"><i class="fas fa-cloud"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Cloud Computing (AWS)</h2>
+        <p>Master AWS services, deployment, and scalable cloud infrastructure for enterprise apps.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Advanced</span>
+          <span class="skill-badge">Cloud</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="security">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cybersecurity">
+        <div class="card-icon"><i class="fas fa-lock"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Cybersecurity 101</h2>
+        <p>Learn ethical hacking, network security, encryption, and protection against cyber threats.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Advanced</span>
+          <span class="skill-badge">Security</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="game">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/345522/pexels-photo-345522.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Game Development">
+        <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Game Development</h2>
+        <p>Create 2D and 3D games using Unity and Unreal Engine with professional game design.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Intermediate</span>
+          <span class="skill-badge">Gaming</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="programming">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/8566473/pexels-photo-8566473.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Node.js Backend">
+        <div class="card-icon"><i class="fas fa-server"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Node.js Backend Development</h2>
+        <p>Build scalable server-side applications with Node.js, Express, and databases.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Intermediate</span>
+          <span class="skill-badge">Backend</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="ai">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Machine Learning">
+        <div class="card-icon"><i class="fas fa-cogs"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Machine Learning Advanced</h2>
+        <p>Train neural networks, implement deep learning models, and solve real-world problems.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Expert</span>
+          <span class="skill-badge">AI/ML</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="web">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/5483071/pexels-photo-5483071.jpeg?auto=compress&cs=tinysrgb&w=600" alt="React.js">
+        <div class="card-icon"><i class="fas fa-react"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>React.js Mastery</h2>
+        <p>Build dynamic web applications with React, hooks, state management, and component design.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Intermediate</span>
+          <span class="skill-badge">Frontend</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="blockchain">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Blockchain">
+        <div class="card-icon"><i class="fas fa-cube"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>Blockchain & Web3</h2>
+        <p>Understand cryptocurrency, smart contracts, and decentralized application development.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Advanced</span>
+          <span class="skill-badge">Blockchain</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-card-type="programming">
+      <div class="card-image-wrapper">
+        <img src="https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=600" alt="PHP">
+        <div class="card-icon"><i class="fas fa-code"></i></div>
+      </div>
+      <div class="card-content">
+        <h2>PHP Development</h2>
+        <p>Learn PHP for server-side web development and backend applications.</p>
+        <div class="card-footer">
+          <span class="skill-badge">Intermediate</span>
+          <span class="skill-badge">Backend</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 <strong>ROBO LEARN</strong> | All Rights Reserved</p>
+    <p>Empowering the Next Generation of Tech Innovators</p>
+    <div class="footer-social">
+      <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+
+</body>
+<!-- Interactive Elements Script -->
+<script src="interactive-elements.js"></script>
+</html>

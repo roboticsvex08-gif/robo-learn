@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robotics Showcase</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #040914;
+      --surface: rgba(8, 16, 34, 0.92);
+      --blue: #3db8ff;
+      --blue-soft: rgba(61, 184, 255, 0.18);
+      --text: #eef4ff;
+      --muted: #9aabc5;
+      --shadow: 0 34px 100px rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(61, 184, 255, 0.08), transparent 18%),
+                  linear-gradient(180deg, #07111f 0%, #02060e 100%);
+      color: var(--text);
+      font-family: Inter, system-ui, sans-serif;
+      line-height: 1.5;
+    }
+
+    .page-shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 36px 24px 48px;
+    }
+
+    .hero-intro {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .hero-intro .eyebrow {
+      color: var(--blue);
+      font-size: 0.82rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-intro h1 {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 920px;
+    }
+
+    .hero-intro p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .showcase-grid {
+      display: grid;
+      gap: 26px;
+    }
+
+    .showcase-card {
+      position: relative;
+      min-height: 58vh;
+      border-radius: 32px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      box-shadow: var(--shadow);
+      border: 1px rgba(255, 255, 255, 0.08);
+      transition: transform 0.45s ease, box-shadow 0.45s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 34px;
+      isolation: isolate;
+    }
+
+    .showcase-card:hover {
+      transform: scale(1.018);
+      box-shadow: 0 48px 130px rgba(0, 0, 0, 0.5);
+    }
+
+    .showcase-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(2, 7, 20, 0.16), rgba(2, 7, 20, 0.68) 45%, rgba(2, 7, 20, 0.94));
+      z-index: 0;
+    }
+
+    .showcase-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 22% 24%, rgba(61, 184, 255, 0.14), transparent 22%),
+                  radial-gradient(circle at 80% 20%, rgba(61, 184, 255, 0.08), transparent 12%);
+      mix-blend-mode: screen;
+      z-index: 1;
+    }
+
+    .showcase-card .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(2, 7, 20, 0.88), transparent 28%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .showcase-card .side-fade {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 28%;
+      height: 100%;
+      background: linear-gradient(270deg, rgba(2, 7, 20, 0.98), transparent 40%);
+      filter: blur(1.8px);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 4;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card-content .eyebrow {
+      font-size: 0.88rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .card-content h2 {
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      margin: 0;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-shadow: 0 22px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .card-content p {
+      margin: 0;
+      color: rgba(238, 244, 255, 0.86);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .card-content .tagline {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-content .tagline::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(61, 184, 255, 0.95);
+      box-shadow: 0 0 18px rgba(61, 184, 255, 0.5);
+    }
+
+    .showcase-card:nth-child(2) .card-overlay {
+      background: linear-gradient(120deg, rgba(2, 7, 20, 0.94), transparent 32%);
+    }
+
+    .showcase-card:nth-child(3) .card-overlay {
+      background: linear-gradient(110deg, rgba(2, 7, 20, 0.92), transparent 30%);
+    }
+
+    @media (max-width: 950px) {
+      .page-shell {
+        padding: 28px 18px 36px;
+      }
+
+      .showcase-card {
+        min-height: 52vh;
+        padding: 26px;
+      }
+
+      .showcase-card .side-fade {
+        width: 40%;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero-intro h1 {
+        font-size: 2.55rem;
+      }
+
+      .hero-intro p {
+        font-size: 0.98rem;
+      }
+
+      .showcase-card {
+        min-height: 44vh;
+        border-radius: 26px;
+        padding: 22px;
+      }
+
+      .showcase-card .side-fade {
+        width: 55%;
+      }
+
+      .card-content h2 {
+        font-size: 2.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="padding: 15px 24px; background: rgba(61, 184, 255, 0.1); text-align: center; max-width: 1280px; margin: 0 auto;">
+    <a href="School%20%20Project.html" style="color: #3db8ff; text-decoration: none; padding: 8px 15px; background: rgba(61, 184, 255, 0.2); border-radius: 8px; font-weight: bold; display: inline-block; transition: all 0.3s;">← Back to Home</a>
+  </div>
+  <div class="page-shell">
+    <section class="hero-intro">
+      <span class="eyebrow">Robotics & AI Innovation</span>
+      <h1>Cinematic robotics showcases designed for a futuristic launch presentation.</h1>
+      <p>Present your projects with immersive full-width visuals, sharp typography, and soft luminous effects that highlight your robotics portfolio.</p>
+    </section>
+
+    <section class="showcase-grid">
+      <article class="showcase-card" data-card-type="robotics" style="background-image: url('mmgm.jpg');">
+        <div class="card-overlay"></div>
+        <div class="side-fade"></div>
+        <div class="card-content">
+          <span class="eyebrow">Autonomous Systems</span>
+          <h2>Modular Manufacturing Matrix</h2>
+          <p>Adaptive robotics with responsive intelligence, presented as a premium cinematic product reveal.</p>
+          <span class="tagline">Precision automation with a modern edge</span>
+        </div>
+      </article>
+
+      <article class="showcase-card" data-card-type="ai" style="background-image: url('lll.webp');">
+        <div class="card-overlay"></div>
+        <div class="side-fade"></div>
+        <div class="card-content">
+          <span class="eyebrow">Vision Intelligence</span>
+          <h2>Deep Learning Motion Suite</h2>
+          <p>High-performance robotic perception and predictive motion control refined for modern AI-driven operations.</p>
+          <span class="tagline">Clarity, speed, and futuristic precision</span>
+        </div>
+      </article>
+
+      <article class="showcase-card" data-card-type="robotics" style="background-image: url('mmm.jpg');">
+        <div class="card-overlay"></div>
+        <div class="side-fade"></div>
+        <div class="card-content">
+          <span class="eyebrow">Strategic Robotics</span>
+          <h2>Next-Gen Machine Intelligence</h2>
+          <p>Seamlessly integrated hardware with futuristic visuals to highlight your robotics startup narrative.</p>
+          <span class="tagline">Built for the next era of automation</span>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+
+<!-- Authentication display script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const user = sessionStorage.getItem('loggedInUser');
+    if (user) {
+        const userData = JSON.parse(user);
+        const nav = document.createElement('div');
+        nav.style.cssText = 'position:fixed; top:12px; right:12px; background:#fff; padding:8px 12px; border-radius:8px; z-index:2000; box-shadow:0 6px 20px rgba(0,0,0,0.12);';
+        nav.innerHTML = `<strong style="color:#00255b;">${userData.identifier || 'User'}</strong> <a href=\"index.html\" style=\"margin-left:10px;color:#2f80ed;text-decoration:none;\" onclick=\"sessionStorage.removeItem('loggedInUser')\">Logout</a>`;
+        document.body.appendChild(nav);
+    }
+});
+</script>
+
+<!-- Interactive Elements Script -->
+<script src="interactive-elements.js"></script>
+</html>

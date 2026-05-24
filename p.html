@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RoboLearn Projects</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+/* =========================
+GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+    padding:40px;
+}
+
+/* =========================
+UPLOAD FORM
+========================= */
+
+.upload-container{
+
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    max-width:800px;
+    margin:auto;
+    margin-bottom:50px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+}
+
+.upload-container h1{
+
+    margin-bottom:25px;
+    color:#00255b;
+
+}
+
+form{
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+}
+
+input,
+textarea,
+select{
+
+    padding:15px;
+    border-radius:10px;
+    border:2px solid #ddd;
+    font-size:16px;
+
+}
+
+textarea{
+
+    height:120px;
+    resize:none;
+
+}
+
+.upload-btn{
+
+    background:#2f80ed;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    font-weight:bold;
+
+}
+
+.upload-btn:hover{
+
+    background:#0059d6;
+
+}
+
+/* =========================
+PROJECT GRID
+========================= */
+
+.projects-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:30px;
+
+}
+
+/* =========================
+PROJECT CARD
+========================= */
+
+.project-card{
+
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+}
+
+.project-image{
+
+    width:100%;
+    height:300px;
+    overflow:hidden;
+    cursor:pointer;
+
+}
+
+.project-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.4s;
+
+}
+
+.project-image img:hover{
+
+    transform:scale(1.05);
+
+}
+
+.project-content{
+
+    padding:30px;
+
+}
+
+.project-category{
+
+    display:inline-block;
+    background:#2f80ed;
+    color:white;
+    padding:8px 16px;
+    border-radius:8px;
+    font-size:13px;
+    margin-bottom:20px;
+
+}
+
+.project-title{
+
+    font-size:38px;
+    color:#00255b;
+    margin-bottom:15px;
+
+}
+
+.project-description{
+
+    color:#555;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:25px;
+
+}
+
+.project-meta{
+
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+    color:#666;
+
+}
+
+.project-buttons{
+
+    display:flex;
+    gap:15px;
+
+}
+
+.project-btn{
+
+    flex:1;
+    text-align:center;
+    padding:15px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+    background:#2f80ed;
+    color:white;
+    transition:0.3s;
+
+}
+
+.project-btn:hover{
+
+    background:#0059d6;
+
+}
+
+/* =========================
+DELETE BUTTON
+========================= */
+
+.delete-btn{
+
+    flex:1;
+    background:#ff3b30;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+.delete-btn:hover{
+
+    background:#d90000;
+
+}
+
+/* =========================
+IMAGE POPUP
+========================= */
+
+.popup{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.popup img{
+
+    max-width:90%;
+    max-height:90%;
+    border-radius:20px;
+
+}
+
+.close-popup{
+
+    position:absolute;
+    top:30px;
+    right:40px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    body{
+
+        padding:20px;
+
+    }
+
+    .project-title{
+
+        font-size:28px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+UPLOAD FORM
+========================= -->
+
+<div class="upload-container">
+
+<h1>Upload RoboLearn Project</h1>
+
+<form id="uploadForm">
+
+<input type="text"
+id="title"
+placeholder="Project Title"
+required>
+
+<input type="text"
+id="studentName"
+placeholder="Student Name"
+required>
+
+<select id="category">
+
+<option>Robotics</option>
+<option>AI</option>
+<option>Drone</option>
+<option>Coding</option>
+<option>IoT</option>
+
+</select>
+
+<textarea
+id="description"
+placeholder="Project Description"
+required></textarea>
+
+<input type="url"
+id="videoLink"
+placeholder="YouTube Video Link">
+
+<input type="file"
+id="image"
+accept="image/*"
+required>
+
+<button type="submit"
+class="upload-btn">
+
+Upload Project
+
+</button>
+
+</form>
+
+</div>
+
+<!-- =========================
+PROJECTS SECTION
+========================= -->
+
+<div class="projects-grid"
+id="projectsGrid">
+
+</div>
+
+<!-- =========================
+IMAGE POPUP
+========================= -->
+
+<div class="popup"
+id="popup">
+
+<span class="close-popup"
+onclick="closePopup()">
+
+&times;
+
+</span>
+
+<img id="popupImage">
+
+</div>
+
+<!-- =========================
+JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================
+LOCAL STORAGE
+========================= */
+
+let projects = JSON.parse(
+localStorage.getItem("robolearnProjects")
+) || [];
+
+/* =========================
+LOAD PROJECTS
+========================= */
+
+function loadProjects(){
+
+    const projectsGrid =
+    document.getElementById("projectsGrid");
+
+    projectsGrid.innerHTML = "";
+
+    projects.forEach((project,index)=>{
+
+        const card = `
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img
+                src="${project.image}"
+                onclick="openPopup('${project.image}')">
+
+            </div>
+
+            <div class="project-content">
+
+                <span class="project-category">
+
+                ${project.category}
+
+                </span>
+
+                <h2 class="project-title">
+
+                ${project.title}
+
+                </h2>
+
+                <p class="project-description">
+
+                ${project.description}
+
+                </p>
+
+                <div class="project-meta">
+
+                    <span>
+                    👨 ${project.studentName}
+                    </span>
+
+                    <span>
+                    👁 ${project.views}
+                    </span>
+
+                </div>
+
+                <div class="project-buttons">
+
+                    <a href="${project.videoLink}"
+                    target="_blank"
+                    class="project-btn">
+
+                    View Video
+
+                    </a>
+
+                    <button
+                    class="delete-btn"
+                    onclick="deleteProject(${index})">
+
+                    Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+        projectsGrid.innerHTML += card;
+
+    });
+
+}
+
+/* =========================
+UPLOAD PROJECT
+========================= */
+
+document.getElementById("uploadForm")
+.addEventListener("submit",
+
+function(e){
+
+    e.preventDefault();
+
+    const title =
+    document.getElementById("title").value;
+
+    const studentName =
+    document.getElementById("studentName").value;
+
+    const category =
+    document.getElementById("category").value;
+
+    const description =
+    document.getElementById("description").value;
+
+    const videoLink =
+    document.getElementById("videoLink").value;
+
+    const imageFile =
+    document.getElementById("image").files[0];
+
+    if(!imageFile){
+
+        alert("Please Upload Image");
+        return;
+
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(){
+
+        const newProject = {
+
+            title,
+            studentName,
+            category,
+            description,
+            videoLink,
+            image: reader.result,
+            views:0
+
+        };
+
+        projects.push(newProject);
+
+        localStorage.setItem(
+        "robolearnProjects",
+        JSON.stringify(projects)
+        );
+
+        loadProjects();
+
+        document.getElementById("uploadForm")
+        .reset();
+
+        alert("Project Uploaded Successfully");
+
+    };
+
+    reader.readAsDataURL(imageFile);
+
+});
+
+/* =========================
+DELETE PROJECT
+========================= */
+
+function deleteProject(index){
+
+    const confirmDelete =
+    confirm("Delete this project?");
+
+    if(confirmDelete){
+
+        projects.splice(index,1);
+
+        localStorage.setItem(
+        "robolearnProjects",
+        JSON.stringify(projects)
+        );
+
+        loadProjects();
+
+        alert("Project Deleted");
+
+    }
+
+}
+
+/* =========================
+IMAGE POPUP
+========================= */
+
+function openPopup(image){
+
+    document.getElementById("popup")
+    .style.display = "flex";
+
+    document.getElementById("popupImage")
+    .src = image;
+
+}
+
+function closePopup(){
+
+    document.getElementById("popup")
+    .style.display = "none";
+
+}
+
+/* =========================
+INITIAL LOAD
+========================= */
+
+loadProjects();
+
+</script>
+
+</body>
+</html>

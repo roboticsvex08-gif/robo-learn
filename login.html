@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Login - RoboLearn</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Main Container -->
+    <div class="login-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>RoboLearn</h1>
+            <p>Master Technology & Innovation</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <!-- Header -->
+            <div class="card-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to your account to continue learning</p>
+            </div>
+
+            <!-- Login Tabs -->
+            <div class="login-tabs">
+                <button class="tab-btn active" type="button" data-tab="email-tab">
+                    <i class="fas fa-envelope"></i> Email
+                </button>
+                <button class="tab-btn" type="button" data-tab="phone-tab">
+                    <i class="fas fa-phone"></i> Phone
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="login-form">
+                <!-- Email Tab -->
+                <div id="email-tab" class="login-tab active">
+                    <div class="form-group">
+                        <label for="emailInput">Email Address</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope"></i>
+                            <input 
+                                type="email" 
+                                id="emailInput" 
+                                name="emailInput" 
+                                placeholder="Enter your email"
+                            >
+                        </div>
+                        <span class="error-message" id="emailInputError"></span>
+                    </div>
+                </div>
+
+                <!-- Phone Tab -->
+                <div id="phone-tab" class="login-tab">
+                    <div class="form-group">
+                        <label for="phoneInput">Phone Number</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input 
+                                type="tel" 
+                                id="phoneInput" 
+                                name="phoneInput" 
+                                placeholder="Enter your phone number"
+                            >
+                        </div>
+                        <span class="error-message" id="phoneInputError"></span>
+                    </div>
+                </div>
+
+                <!-- Password Field (Common) -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <!-- Show/Hide Password Button -->
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="form-footer">
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="login-btn">
+                    <span class="btn-text">Sign In</span>
+                    <i class="fas fa-arrow-right"></i>
+                    <span class="loading-spinner"></span>
+                </button>
+
+                <!-- Success Message -->
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Login successful! Redirecting...</span>
+                </div>
+            </form>
+
+            <!-- Divider -->
+            <div class="divider">
+                <span>Or continue with</span>
+            </div>
+
+            <!-- Social Login Buttons -->
+            <div class="social-login">
+                <button class="social-btn google-btn" type="button" title="Login with Google">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </button>
+                <button class="social-btn facebook-btn" type="button" title="Login with Facebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </button>
+                <button class="social-btn github-btn" type="button" title="Login with GitHub">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </button>
+            </div>
+
+            <!-- Sign Up Link -->
+            <div class="signup-link">
+                <p>Don't have an account? <a href="register.html">Create one</a></p>
+            </div>
+        </div>
+
+        <!-- Navigation to Main Pages -->
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="School%20%20Project.html" class="btn-link" style="margin: 0 10px;">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="robotics.html" class="btn-link" style="margin: 0 10px;">
+                <i class="fas fa-robot"></i> Robotics
+            </a>
+            <a href="robo.html" class="btn-link" style="margin: 0 10px;">
+                <i class="fas fa-project-diagram"></i> Projects
+            </a>
+        </div>
+
+        <!-- Footer Text -->
+        <div class="footer-text">
+            <p>&copy; 2026 RoboLearn. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="login.js"></script>
+</body>
+</html>

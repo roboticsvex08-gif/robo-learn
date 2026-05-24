@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Robo Learn</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    overflow-x:hidden;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-transparent{
+    position:fixed;
+    top:12px;
+    left:12px;
+    z-index:1000;
+}
+
+.logo-transparent img{
+    height:60px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+    position:relative;
+    height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("bfbf.png");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+
+    padding-left:100px;
+
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+    z-index:5;
+}
+
+.hero h1{
+    font-size:80px;
+    line-height:1.1;
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.hero p{
+    font-size:24px;
+    margin-bottom:40px;
+    line-height:1.6;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:18px 40px;
+    border:none;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.blue-btn{
+    background:#2f80ed;
+    color:white;
+}
+
+.yellow-btn{
+    background:#f2c319;
+    color:black;
+}
+
+/* =========================
+   WAVE
+========================= */
+
+.custom-wave{
+    position:absolute;
+    bottom:-1px;
+    left:0;
+    width:100%;
+    line-height:0;
+    z-index:2;
+}
+
+.custom-wave svg{
+    display:block;
+    width:100%;
+    height:95px;
+}
+
+/* =========================
+   DRONE EXHIBITION
+========================= */
+
+.drone-section{
+    padding:100px 8%;
+    background:#ffffff;
+}
+
+.drone-title{
+    text-align:center;
+    font-size:60px;
+    color:#00255b;
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.drone-subtitle{
+    text-align:center;
+    font-size:22px;
+    color:#555;
+    max-width:900px;
+    margin:auto;
+    margin-bottom:70px;
+    line-height:1.8;
+}
+
+.drone-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:40px;
+}
+
+.drone-card{
+    background:#f7f7f7;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 10px 35px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.drone-card:hover{
+    transform:translateY(-10px);
+}
+
+.drone-card img{
+    width:100%;
+    height:450px;
+    object-fit:contain;
+    background:white;
+    padding:10px;
+    display:block;
+}
+
+.drone-content{
+    padding:30px;
+}
+
+.drone-content h2{
+    font-size:32px;
+    color:#00255b;
+    margin-bottom:15px;
+}
+
+.drone-content p{
+    font-size:18px;
+    color:#555;
+    line-height:1.8;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1100px){
+
+    .hero{
+        padding:40px;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .drone-title{
+        font-size:42px;
+    }
+
+    .drone-subtitle{
+        font-size:18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     LOGO & NAVIGATION
+========================= -->
+
+<div class="logo-transparent" style="display: flex; align-items: center; gap: 20px;">
+    <img src="444.png" alt="Logo">
+    <a href="School%20%20Project.html" style="color: white; text-decoration: none; padding: 8px 15px; background: rgba(255,255,255,0.2); border-radius: 8px; font-weight: bold; transition: all 0.3s;">← Back to Home</a>
+</div>
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+Explore STEM/STEAM<br>
+Activities and Resources
+</h1>
+
+<p>
+Learn Robotics & AI, Arduino & Future Technology
+with live practical projects.
+</p>
+
+<div class="buttons">
+
+<a href="ss.html" class="btn blue-btn">
+Explore More
+</a>
+
+<a href="contact-page/index.html" class="btn yellow-btn">
+Contact Us
+</a>
+
+</div>
+
+</div>
+
+<!-- =========================
+     WAVE SVG
+========================= -->
+
+<div class="custom-wave">
+
+<svg 
+viewBox="0 0 1440 120" 
+preserveAspectRatio="none">
+
+<path 
+fill="#f5f5f5"
+
+d="
+M0,40
+C80,90 160,0 240,40
+C320,80 400,0 480,40
+C560,80 640,0 720,40
+C800,80 880,0 960,40
+C1040,80 1120,0 1200,40
+C1280,80 1360,0 1440,40
+L1440,120
+L0,120
+Z">
+</path>
+
+</svg>
+
+</div>
+
+</section>
+
+<!-- =========================
+     DRONE EXHIBITION
+========================= -->
+
+<section class="drone-section">
+
+<h1 class="drone-title">
+Our Drone Exhibition
+</h1>
+
+<p class="drone-subtitle">
+Robo Learn successfully organized a live Drone & Robotics Exhibition where students explored future technology, practical drone flying, and innovative STEM learning experiences.
+</p>
+
+<div class="drone-grid">
+
+    <!-- CARD 1 -->
+
+    <div class="drone-card">
+
+        <img src="trtr.png" alt="Drone Technology">
+
+        <div class="drone-content">
+
+            <h2>Drone Technology</h2>
+
+            <p>
+            Students learned advanced drone controls, flight systems, and real-world robotics applications through live demonstrations.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+
+    <div class="drone-card">
+
+        <img src="jhjh.png" alt="Live Drone Flying">
+
+        <div class="drone-content">
+
+            <h2>Live Drone Flying</h2>
+
+            <p>
+            Robo Learn conducted exciting live drone flying sessions where students experienced practical STEM learning and innovation.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 3 -->
+
+    <div class="drone-card">
+
+        <img src="uyuy.png" alt="Future Innovation">
+
+        <div class="drone-content">
+
+            <h2>Future Innovation</h2>
+
+            <p>
+            Our exhibition inspired students with AI, robotics, drones, and future technologies for the next generation of innovators.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</body>
+</html>

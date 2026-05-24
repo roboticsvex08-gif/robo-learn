@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Courses - RoboLearn</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================================
+           COURSE CARDS SECTION - CSS
+           ============================================ */
+
+        .courses-section {
+            min-height: 100vh;
+            padding: 60px 20px;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Section Header */
+        .courses-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: slideDown 0.8s ease;
+        }
+
+        .courses-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .courses-header p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Course Cards Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Individual Course Card */
+        .course-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        /* Card Pseudo Element for Glow */
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+            pointer-events: none;
+        }
+
+        /* Card Hover Effects */
+        .course-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255, 255, 255, 0.98);
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-card:hover::before {
+            left: 100%;
+        }
+
+        /* Card Header */
+        .card-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover .card-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* Card Title */
+        .course-card h3 {
+            font-size: 1.6em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .course-card:hover h3 {
+            color: var(--secondary-color);
+        }
+
+        /* Card Description */
+        .course-card p {
+            color: #333333;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1em;
+            flex-grow: 1;
+            font-weight: 500;
+        }
+
+        /* Features List - Hide if present */
+        .course-features {
+            display: none;
+        }
+
+        /* CTA Button */
+        .card-button {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+
+        .card-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 153, 255, 0.5);
+        }
+
+        .card-button:hover::before {
+            left: 100%;
+        }
+
+        .card-button span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-card {
+            animation: slideDown 0.6s ease backwards;
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        .course-card:nth-child(4) { animation-delay: 0.4s; }
+        .course-card:nth-child(5) { animation-delay: 0.5s; }
+        .course-card:nth-child(6) { animation-delay: 0.6s; }
+        .course-card:nth-child(7) { animation-delay: 0.7s; }
+        .course-card:nth-child(8) { animation-delay: 0.8s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .courses-header h1 {
+                font-size: 2em;
+            }
+
+            .courses-header p {
+                font-size: 1em;
+            }
+
+            .courses-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .course-card {
+                padding: 20px;
+            }
+
+            .course-card:hover {
+                transform: translateY(-10px) scale(1.01);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .courses-section {
+                padding: 40px 15px;
+            }
+
+            .courses-header h1 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+
+            .courses-header p {
+                font-size: 0.9em;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .course-card h3 {
+                font-size: 1.2em;
+            }
+
+            .card-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <!-- Section Header -->
+        <div class="courses-header">
+            <h1>Our Courses</h1>
+            <p>Unlock your potential with our comprehensive robotics and technology courses</p>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="courses-grid">
+            <!-- Course 1: Robotics -->
+            <div class="course-card" data-course="Robotics">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Robotics</h3>
+                    <p>Design and build real robots from scratch.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+
+            <!-- Course 2: Arduino Coding -->
+            <div class="course-card" data-course="Arduino Coding">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Arduino Coding</h3>
+                    <p>Master microcontrollers with real-world projects.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+
+            <!-- Course 3: AI Projects -->
+            <div class="course-card" data-course="AI Projects">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Projects</h3>
+                    <p>Bring artificial intelligence to life.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+
+            <!-- Course 4: Electronics -->
+            <div class="course-card" data-course="Electronics">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Electronics</h3>
+                    <p>Learn circuits, sensors, and embedded systems.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+
+            <!-- Course 5: Future Technology -->
+            <div class="course-card" data-course="Future Technology">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Future Technology</h3>
+                    <p>Explore IoT, automation, and next-gen innovations.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+
+            <!-- Course 6: Live Online Classes -->
+            <div class="course-card" data-course="Live Online Classes">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Live Online Classes</h3>
+                    <p>Join our live sessions and interact with instructors in real-time.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+
+            <!-- Course 7: Comprehensive Learning Resources -->
+            <div class="course-card" data-course="Comprehensive Learning Resources">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Comprehensive Learning Resources</h3>
+                    <p>Access a vast library of tutorials, guides, and documentation.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+
+            <!-- Course 8: Expert Instructors -->
+            <div class="course-card" data-course="Expert Instructors">
+                <div>
+                    <div class="card-icon">
+                        <i class="fas fa-chalkboard-user"></i>
+                    </div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with real-world experience.</p>
+                </div>
+                <button class="card-button enroll-btn">
+                    <span>
+                        <i class="fas fa-arrow-right"></i>
+                        Enroll Now
+                    </span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Particle Animation Script -->
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Course Card Click Handler
+        document.querySelectorAll('.enroll-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const courseCard = this.closest('.course-card');
+                const courseName = courseCard.getAttribute('data-course');
+                
+                // Redirect to registration page with course name as URL parameter
+                window.location.href = `school project.html?course=${encodeURIComponent(courseName)}`;
+            });
+        });
+    </script>
+</body>
+</html>

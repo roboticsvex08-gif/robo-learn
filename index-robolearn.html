@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robo Learn - Welcome</title>
+    <link rel="stylesheet" href="robolearn-platform/frontend/css/style.css" />
+    <style>
+      .welcome-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.1));
+      }
+
+      .welcome-content {
+        text-align: center;
+        animation: fadeIn 0.8s ease;
+      }
+
+      .welcome-title {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #00d4ff, #ff006e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .welcome-subtitle {
+        font-size: 1.5rem;
+        color: var(--text-light);
+        margin-bottom: 2rem;
+      }
+
+      .welcome-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .feature-card {
+        background: var(--card-bg);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: var(--transition);
+      }
+
+      .feature-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-8px);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .setup-section {
+        background: var(--card-bg);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 4rem;
+        text-align: left;
+      }
+
+      .setup-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+      }
+
+      .setup-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .setup-step {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .step-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--gradient-primary);
+        color: var(--dark-bg);
+        border-radius: 50%;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .step-content h3 {
+        margin-bottom: 0.5rem;
+        color: var(--text-dark);
+      }
+
+      .step-content code {
+        background: rgba(0, 212, 255, 0.1);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        color: var(--primary);
+        font-family: 'Courier New', monospace;
+        display: block;
+        margin-top: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .welcome-title {
+          font-size: 2.5rem;
+        }
+
+        .welcome-buttons {
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">🤖 Robo Learn</div>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#setup">Setup</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+      <div class="container">
+        <div class="welcome-content">
+          <div class="welcome-title">🚀 Robo Learn</div>
+          <div class="welcome-subtitle">Student Robotics Project Showcase Platform</div>
+
+          <div class="welcome-buttons">
+            <a href="robolearn-platform/frontend/public/index.html" class="button btn-primary">
+              👁️ View Projects
+            </a>
+            <a href="robolearn-platform/frontend/admin/login.html" class="button btn-secondary">
+              🔐 Admin Panel
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+      <div class="container">
+        <h2 class="section-title">✨ Features</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📤</div>
+            <h3 class="feature-title">Easy Upload</h3>
+            <p>Upload projects with images, files, and videos in minutes</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🌐</div>
+            <h3 class="feature-title">Beautiful Showcase</h3>
+            <p>Display projects in an attractive grid layout</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-title">Search & Filter</h3>
+            <p>Find projects by search, category, or difficulty</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-title">Analytics</h3>
+            <p>Track views, downloads, and project statistics</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🎥</div>
+            <h3 class="feature-title">Video Integration</h3>
+            <p>Embed YouTube videos for project demonstrations</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3 class="feature-title">Responsive Design</h3>
+            <p>Works perfectly on all devices and screen sizes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Setup Section -->
+    <section class="section" id="setup">
+      <div class="container">
+        <h2 class="section-title">🛠️ Quick Setup</h2>
+
+        <div class="setup-section">
+          <h2>5-Minute Setup Guide</h2>
+
+          <div class="setup-steps">
+            <div class="setup-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Install Node.js & MongoDB</h3>
+                <p>Download Node.js from nodejs.org and MongoDB from mongodb.com</p>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Install Backend Dependencies</h3>
+                <p>Navigate to backend folder and run:</p>
+                <code>cd robolearn-platform/backend && npm install</code>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>Configure Environment</h3>
+                <p>Create .env file in backend folder with:</p>
+                <code>PORT=5000<br />MONGODB_URI=mongodb://localhost:27017/robolearn<br />JWT_SECRET=your_secret_key<br />NODE_ENV=development</code>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Start Backend Server</h3>
+                <p>From backend folder, run:</p>
+                <code>npm start</code>
+              </div>
+            </div>
+
+            <div class="setup-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>Open Frontend</h3>
+                <p>Open in browser:</p>
+                <code>robolearn-platform/frontend/public/index.html</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setup-section" style="margin-top: 2rem;">
+          <h2>First Time Usage</h2>
+          <ol style="line-height: 2; color: var(--text-light);">
+            <li>Click "Admin Panel" or go to <code style="background: rgba(0, 212, 255, 0.1); padding: 0.25rem 0.5rem; border-radius: 4px; color: var(--primary);">robolearn-platform/frontend/admin/login.html</code></li>
+            <li>Click "Create one here" to register a new admin account</li>
+            <li>Fill in username, email, and password</li>
+            <li>After registration, go to "Upload Project"</li>
+            <li>Fill in all project details and upload</li>
+            <li>Your project will instantly appear on the public showcase page!</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-bottom" style="text-align: center;">
+          <p>&copy; 2024 Robo Learn. All rights reserved.</p>
+          <p>Read the <a href="robolearn-platform/README.md" style="color: var(--primary);">complete documentation</a> for more details.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="robolearn-platform/frontend/js/api.js"></script>
+  </body>
+</html>

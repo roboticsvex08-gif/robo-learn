@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robo Learn</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    overflow-x:hidden;
+}
+
+/* WATERMARK */
+.watermark{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0.08;
+    z-index:-1;
+}
+
+
+/* LOGO TRANSPARENT BACKGROUND */
+.logo-transparent {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.0); /* fully transparent */
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-transparent img {
+    height: 60px;
+    background: transparent;
+}
+
+/* HERO SECTION */
+.hero{
+    position:relative;
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("www.png");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    padding-left:100px;
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:80px;
+    line-height:1.1;
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.hero p{
+    font-size:24px;
+    margin-bottom:40px;
+}
+
+/* BUTTONS */
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.founder-btn {
+    padding: 18px 40px;
+    background: linear-gradient(135deg, #ff006e, #ff4757);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.founder-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 0, 110, 0.4);
+}
+
+.btn{
+    padding:18px 40px;
+    border:none;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.blue{
+    background:#2f80ed;
+    color:white;
+}
+
+.yellow{
+    background:#f2c319;
+    color:black;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* SECTION */
+.section{
+    padding:40px 10% 80px 10%;
+    background:transparent;
+}
+
+.section h2{
+    font-size:45px;
+    color:brown;
+    margin-bottom:20px;
+}
+
+.section p{
+    font-size:20px;
+    line-height:1.8;
+    color:#333;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-top:50px;
+}
+
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#2f80ed;
+    margin-bottom:15px;
+}
+
+.card p{
+    font-size:17px;
+}
+
+/* FINAL BUTTONS */
+.bottom-buttons{
+    text-align:center;
+    margin-top:60px;
+}
+
+/* WAVE */
+.wave{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+}
+
+/* WAVE SVG AT BOTTOM OF HERO */
+.wave svg{
+    display:block;
+    width:100%;
+    height:120px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOGO TRANSPARENT -->
+<div class="logo-transparent">
+    <img src="444.png" alt="Logo">
+</div>
+
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>The #1 Robotics<br>Education Platform</h1>
+
+<p><i>
+<b>Learn Robotics & AI, Arduino & Future Technology
+with live practical projects.
+</i></p></b
+
+<div class="buttons">
+<a href="ss.html" class="btn blue">Explore More</a>
+
+<a href="contact-page/index.html" class="btn yellow">
+Contact Us
+</a>
+</div>
+
+<div class="buttons" style="margin-top: 20px;">
+</div>
+
+
+
+<!-- WAVE SVG AT BOTTOM OF HERO -->
+<div style="
+position:absolute;
+left:0;
+right:0;
+bottom:-1px;
+width:100%;
+line-height:0;
+z-index:2;
+">
+
+<svg
+viewBox="0 0 1440 120"
+width="100%"
+height="90"
+preserveAspectRatio="none"
+style="display:block;">
+
+<path
+d="M0,50
+C60,90 120,90 180,50
+C240,10 300,10 360,50
+C420,90 480,90 540,50
+C600,10 660,10 720,50
+C780,90 840,90 900,50
+C960,10 1020,10 1080,50
+C1140,90 1200,90 1260,50
+C1320,10 1380,10 1440,50
+L1440,120
+L0,120
+Z"
+
+fill="#ffffff"/>
+
+</svg>
+</div>
+</div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="section">
+
+<h2>Building Tomorrow's Innovators, Today</h2>
+
+<p>
+Robo Learn is a cutting-edge edtech company that empowers students with
+hands-on skills in Robotics, Arduino Coding, AI Projects,
+Electronics, and Future Technology.
+Every lesson is built around practical projects and live classes.
+</p>
+
+<div class="features">
+
+<div class="card" data-card-type="robotics">
+<h3>🤖 Robotics</h3>
+<p>Design and build real robots from scratch.</p>
+</div>
+
+<div class="card" data-card-type="arduino">
+<h3>💻 Arduino Coding</h3>
+<p>Master microcontrollers with real-world projects.</p>
+</div>
+
+<div class="card" data-card-type="ai">
+<h3>🧠 AI Projects</h3>
+<p>Bring artificial intelligence to life.</p>
+</div>
+
+<div class="card" data-card-type="electronics">
+<h3>⚡ Electronics</h3>
+<p>Learn circuits, sensors, and embedded systems.</p>
+</div>
+
+<div class="card" data-card-type="iot">
+<h3>🌐 Future Technology</h3>
+<p>Explore IoT, automation, and next-gen innovations.</p>
+</div>
+
+<div class="card" data-card-type="classes">
+  <h3>🎥 Live  Online Classes</h3>
+  <p>Join our live sessions and interact with instructors in real-time.</p>
+</div>
+<div class="card" data-card-type="ai">
+  <h3>📚 Comprehensive Learning Resources</h3>
+  <p>Access a vast library of tutorials, guides, and documentation.</p>
+  </div>
+<div class="card" data-card-type="classes">
+  <h3>👨‍🏫 Expert Instructors</h3>
+  <p>Learn from industry professionals with real-world experience.</p>
+</div>
+
+<div class="bottom-buttons">
+
+
+<br>
+
+<center style="margin-top: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+    <a href="robo.html" class="btn yellow">Open Robo Page</a>
+    <button class="btn browse-courses-header" id="browseCoursesHeaderBtn" style="background: linear-gradient(135deg, #00d4ff, #0099ff); color: white; text-decoration: none; cursor: pointer; border: none; font-weight: 600;">Browse All Courses</button>
+    <a href="founder.html" class="founder-btn">👤 Know Our Founder</a>
+</center>
+
+<center style="margin-top: 20px;">
+    <a href="fess.html" style="padding: 18px 40px; background: #1abc9c; color: white; border: none; border-radius: 15px; font-size: 20px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s; display: inline-block;">💰 Fees Structure</a>
+</center>
+
+</div>
+
+</section>
+
+<!-- Navigation & Authentication Bar -->
+<div style="background: linear-gradient(135deg, rgba(47, 128, 237, 0.2), rgba(242, 195, 25, 0.1)); padding: 15px 10%; text-align: center; border-top: 1px solid rgba(47, 128, 237, 0.3);">
+    <div id="authNav" style="display: none;">
+        <span style="color: #333; font-weight: bold;">Welcome, <span id="userName">User</span>!</span>
+        <a href="index.html" onclick="logoutUser(); return false;" style="margin-left: 20px; padding: 8px 16px; background: #2f80ed; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">Logout</a>
+    </div>
+    <div id="loginNav">
+        <a href="index.html" style="margin: 0 10px; color: #2f80ed; text-decoration: none; font-weight: 600;">Login</a>
+        <a href="register.html" style="margin: 0 10px; padding: 8px 16px; background: #2f80ed; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">Register</a>
+    </div>
+</div>
+
+</body>
+
+<!-- Interactive Elements Script -->
+<script src="interactive-elements.js"></script>
+
+<!-- Initialize Authentication Display -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = sessionStorage.getItem('loggedInUser');
+        if (user) {
+            const userData = JSON.parse(user);
+            document.getElementById('authNav').style.display = 'block';
+            document.getElementById('loginNav').style.display = 'none';
+            document.getElementById('userName').textContent = userData.identifier || 'User';
+        } else {
+            document.getElementById('authNav').style.display = 'none';
+            document.getElementById('loginNav').style.display = 'block';
+        }
+    });
+
+    function logoutUser() {
+        if (confirm('Are you sure you want to logout?')) {
+            sessionStorage.removeItem('loggedInUser');
+            localStorage.removeItem('rememberMe');
+            window.location.href = 'index.html';
+        }
+    }
+
+    // ============================================
+    // BROWSE ALL COURSES - FROM SCHOOL PROJECT PAGE
+    // ============================================
+    const allCourses = [
+        { name: 'Robotics', icon: 'fas fa-robot' },
+        { name: 'Arduino Coding', icon: 'fas fa-microchip' },
+        { name: 'AI Projects', icon: 'fas fa-brain' },
+        { name: 'Electronics', icon: 'fas fa-plug' },
+        { name: 'Future Technology', icon: 'fas fa-rocket' },
+        { name: 'Live Online Classes', icon: 'fas fa-video' },
+        { name: 'Comprehensive Learning Resources', icon: 'fas fa-book' },
+        { name: 'Expert Instructors', icon: 'fas fa-chalkboard-user' }
+    ];
+
+    // Create modal HTML
+    const modalHTML = `
+        <div class="courses-modal-overlay-sp" id="coursesModalOverlaySP">
+            <div class="courses-modal-sp">
+                <div class="modal-header-sp">
+                    <h2>All Courses</h2>
+                    <button class="modal-close-btn-sp" id="modalCloseBtnSP">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="courses-list-sp" id="coursesListSP">
+                    <!-- Courses will be added here -->
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add modal to page
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // Add styles for modal
+    const styles = `
+        <style>
+            .courses-modal-overlay-sp {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 1000;
+                backdrop-filter: blur(4px);
+                justify-content: center;
+                align-items: center;
+            }
+
+            .courses-modal-overlay-sp.show {
+                display: flex;
+            }
+
+            .courses-modal-sp {
+                background: white;
+                border-radius: 15px;
+                padding: 30px;
+                max-width: 500px;
+                width: 90%;
+                max-height: 70vh;
+                overflow-y: auto;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                animation: slideUp 0.4s ease;
+            }
+
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .modal-header-sp {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #f0f0f0;
+                padding-bottom: 15px;
+            }
+
+            .modal-header-sp h2 {
+                margin: 0;
+                color: #0099ff;
+                font-size: 1.6em;
+            }
+
+            .modal-close-btn-sp {
+                background: none;
+                border: none;
+                color: #0099ff;
+                font-size: 1.3em;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                padding: 0;
+            }
+
+            .modal-close-btn-sp:hover {
+                transform: rotate(90deg);
+                color: #00d4ff;
+            }
+
+            .courses-list-sp {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .course-item-sp {
+                background: #f8f8f8;
+                border: 2px solid #e0e0e0;
+                border-radius: 10px;
+                padding: 15px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .course-item-sp:hover {
+                background: #f0f0f0;
+                border-color: #0099ff;
+                transform: translateX(5px);
+                box-shadow: 0 5px 15px rgba(0, 153, 255, 0.2);
+            }
+
+            .course-item-icon-sp {
+                font-size: 1.3em;
+                color: #0099ff;
+                flex-shrink: 0;
+            }
+
+            .course-item-name-sp {
+                color: #333;
+                font-weight: 600;
+                font-size: 0.95em;
+                flex-grow: 1;
+            }
+
+            .course-item-arrow-sp {
+                color: #0099ff;
+                font-size: 1.1em;
+                flex-shrink: 0;
+            }
+        </style>
+    `;
+
+    document.head.insertAdjacentHTML('beforeend', styles);
+
+    // Handle Browse All Courses Button
+    document.getElementById('browseCoursesHeaderBtn').addEventListener('click', function() {
+        showCoursesModalSP();
+    });
+
+    // Close modal button
+    document.getElementById('modalCloseBtnSP').addEventListener('click', function() {
+        closeCoursesModalSP();
+    });
+
+    // Close when clicking outside
+    document.getElementById('coursesModalOverlaySP').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeCoursesModalSP();
+        }
+    });
+
+    function showCoursesModalSP() {
+        const modal = document.getElementById('coursesModalOverlaySP');
+        const coursesList = document.getElementById('coursesListSP');
+        
+        coursesList.innerHTML = '';
+        
+        allCourses.forEach((course) => {
+            const courseItem = document.createElement('div');
+            courseItem.className = 'course-item-sp';
+            courseItem.innerHTML = `
+                <div class="course-item-icon-sp">
+                    <i class="${course.icon}"></i>
+                </div>
+                <div class="course-item-name-sp">${course.name}</div>
+                <div class="course-item-arrow-sp">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            `;
+            
+            courseItem.addEventListener('click', function() {
+                sendCourseEnquirySP(course.name);
+            });
+            
+            coursesList.appendChild(courseItem);
+        });
+        
+        modal.classList.add('show');
+    }
+
+    function closeCoursesModalSP() {
+        const modal = document.getElementById('coursesModalOverlaySP');
+        modal.classList.remove('show');
+    }
+
+    function sendCourseEnquirySP(courseName) {
+        const whatsappMessage = `Hello Robo Learn,
+
+I want to join the ${courseName} course. Can you give me some information about:
+• Fees
+• Duration
+• Classes
+• Projects
+• Certificate
+
+Please send me the details.
+
+Thank you.`;
+
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        const whatsappUrl = `https://wa.me/917029709096?text=${encodedMessage}`;
+        
+        closeCoursesModalSP();
+        window.open(whatsappUrl, '_blank');
+    }
+
+</script>
+</html>

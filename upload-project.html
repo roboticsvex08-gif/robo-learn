@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Project - RoboLearn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .upload-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .upload-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .upload-header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .upload-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .file-upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9ff;
+        }
+
+        .file-upload-area:hover {
+            border-color: #764ba2;
+            background: #f0f2ff;
+        }
+
+        .file-upload-area.dragover {
+            border-color: #764ba2;
+            background: #e8ebff;
+            transform: scale(1.02);
+        }
+
+        .file-upload-area i {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .file-upload-area p {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .file-upload-area small {
+            color: #666;
+            display: block;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-list {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .file-item {
+            background: #f0f2ff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .file-item span {
+            color: #333;
+            font-weight: 500;
+        }
+
+        .file-item button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .file-item button:hover {
+            background: #ff5252;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #f0f2ff;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #e8ebff;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .alert i {
+            margin-right: 10px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .file-size-limit {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 8px;
+        }
+
+        .link-to-gallery {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link-to-gallery a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .link-to-gallery a:hover {
+            color: #764ba2;
+        }
+
+        @media (max-width: 768px) {
+            .upload-container {
+                padding: 20px 10px;
+            }
+
+            .upload-card {
+                padding: 25px 15px;
+            }
+
+            .upload-header h1 {
+                font-size: 1.8em;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .file-upload-area {
+                padding: 25px;
+            }
+
+            .file-upload-area i {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <div class="upload-card">
+            <!-- Header -->
+            <div class="upload-header">
+                <h1><i class="fas fa-cloud-upload-alt"></i> Upload Project</h1>
+                <p>Share your amazing projects with the community</p>
+            </div>
+
+            <!-- Alerts -->
+            <div id="successAlert" class="alert alert-success">
+                <i class="fas fa-check-circle"></i>
+                <span id="successMessage"></span>
+            </div>
+            <div id="errorAlert" class="alert alert-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorMessage"></span>
+            </div>
+            <div id="infoAlert" class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <span id="infoMessage"></span>
+            </div>
+
+            <!-- Form -->
+            <form id="uploadForm">
+                <!-- Project Name -->
+                <div class="form-group">
+                    <label for="projectName">Project Name *</label>
+                    <input type="text" id="projectName" name="projectName" placeholder="Enter your project name" required>
+                </div>
+
+                <!-- Uploader Name -->
+                <div class="form-group">
+                    <label for="uploaderName">Your Name / Team Name *</label>
+                    <input type="text" id="uploaderName" name="uploaderName" placeholder="Your name or team name" required>
+                </div>
+
+                <!-- Project Description -->
+                <div class="form-group">
+                    <label for="description">Project Description</label>
+                    <textarea id="description" name="description" placeholder="Describe your project, what it does, and any special features..."></textarea>
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-group">
+                    <label>Project Files (Zip, Rar, or single file) *</label>
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <i class="fas fa-folder-open"></i>
+                        <p>Click to browse or drag files here</p>
+                        <small>ZIP, RAR, HTML, PDF, or any project files (Max 50MB)</small>
+                    </div>
+                    <input type="file" id="fileInput" accept=".zip,.rar,.7z,.html,.pdf,.doc,.docx,.txt,.js,.py,.java,.cpp,.sql,.json" required>
+                    <div class="file-list" id="fileList"></div>
+                    <div class="file-size-limit">Maximum file size: 50MB</div>
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="form-buttons">
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Clear
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-upload"></i> Upload Project
+                    </button>
+                </div>
+            </form>
+
+            <!-- Link to Gallery -->
+            <div class="link-to-gallery">
+                <p>Want to see other projects? <a href="/projects-gallery">Visit the Projects Gallery</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadForm = document.getElementById('uploadForm');
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+
+        // Alert helper functions
+        function showAlert(type, message) {
+            const alert = document.getElementById(`${type}Alert`);
+            const messageSpan = document.getElementById(`${type}Message`);
+            messageSpan.textContent = message;
+            alert.style.display = 'flex';
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+
+        // File upload area click
+        fileUploadArea.addEventListener('click', () => fileInput.click());
+
+        // Drag and drop
+        fileUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.add('dragover');
+        });
+
+        fileUploadArea.addEventListener('dragleave', () => {
+            fileUploadArea.classList.remove('dragover');
+        });
+
+        fileUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            updateFileList();
+        });
+
+        // File input change
+        fileInput.addEventListener('change', updateFileList);
+
+        function updateFileList() {
+            fileList.innerHTML = '';
+            if (fileInput.files.length > 0) {
+                fileList.style.display = 'block';
+                Array.from(fileInput.files).forEach((file, index) => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    const sizeMB = (file.size / 1024 / 1024).toFixed(2);
+                    fileItem.innerHTML = `
+                        <span><i class="fas fa-file"></i> ${file.name} (${sizeMB}MB)</span>
+                        <button type="button" onclick="removeFile(${index})">Remove</button>
+                    `;
+                    fileList.appendChild(fileItem);
+                });
+            } else {
+                fileList.style.display = 'none';
+            }
+        }
+
+        function removeFile(index) {
+            const dataTransfer = new DataTransfer();
+            Array.from(fileInput.files).forEach((file, i) => {
+                if (i !== index) {
+                    dataTransfer.items.add(file);
+                }
+            });
+            fileInput.files = dataTransfer.files;
+            updateFileList();
+        }
+
+        // Form submission
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const projectName = document.getElementById('projectName').value.trim();
+            const uploaderName = document.getElementById('uploaderName').value.trim();
+            const description = document.getElementById('description').value.trim();
+            const file = fileInput.files[0];
+
+            if (!projectName) {
+                showAlert('error', 'Please enter a project name');
+                return;
+            }
+
+            if (!uploaderName) {
+                showAlert('error', 'Please enter your name or team name');
+                return;
+            }
+
+            if (!file) {
+                showAlert('error', 'Please select a file to upload');
+                return;
+            }
+
+            // Check file size (50MB limit)
+            const maxSize = 50 * 1024 * 1024;
+            if (file.size > maxSize) {
+                showAlert('error', 'File size exceeds 50MB limit');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('projectName', projectName);
+            formData.append('uploaderName', uploaderName);
+            formData.append('description', description);
+            formData.append('file', file);
+
+            submitBtn.disabled = true;
+            progressBar.style.display = 'block';
+            progressFill.style.width = '0%';
+
+            try {
+                const xhr = new XMLHttpRequest();
+
+                xhr.upload.addEventListener('progress', (e) => {
+                    if (e.lengthComputable) {
+                        const percentComplete = (e.loaded / e.total) * 100;
+                        progressFill.style.width = percentComplete + '%';
+                    }
+                });
+
+                xhr.addEventListener('load', () => {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        showAlert('success', response.message || 'Project uploaded successfully!');
+                        uploadForm.reset();
+                        fileList.style.display = 'none';
+                        progressBar.style.display = 'none';
+                        progressFill.style.width = '0%';
+                    } else {
+                        const response = JSON.parse(xhr.responseText);
+                        showAlert('error', response.message || 'Upload failed');
+                    }
+                    submitBtn.disabled = false;
+                });
+
+                xhr.addEventListener('error', () => {
+                    showAlert('error', 'Network error. Please try again.');
+                    submitBtn.disabled = false;
+                });
+
+                xhr.open('POST', '/api/upload-project');
+                xhr.send(formData);
+            } catch (error) {
+                showAlert('error', 'An error occurred: ' + error.message);
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

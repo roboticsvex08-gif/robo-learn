@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projects - RoboLearn</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    overflow-x:hidden;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-transparent{
+    position:fixed;
+    top:12px;
+    left:12px;
+    z-index:1000;
+}
+
+.logo-transparent img{
+    height:60px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+    position:relative;
+    height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("ababa.webp");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+
+    padding-left:100px;
+
+    color:white;
+}
+
+.hero-content{
+    max-width:700px;
+    z-index:5;
+}
+
+.hero h1{
+    font-size:80px;
+    line-height:1.1;
+    margin-bottom:20px;
+    font-weight:900;
+}
+
+.hero p{
+    font-size:24px;
+    margin-bottom:40px;
+    line-height:1.6;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:18px 40px;
+    border:none;
+    border-radius:15px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+.blue-btn{
+    background:#2f80ed;
+    color:white;
+}
+
+.yellow-btn{
+    background:#f2c319;
+    color:black;
+}
+
+/* =========================
+   WAVE
+========================= */
+
+.custom-wave{
+    position:absolute;
+    bottom:-1px;
+    left:0;
+    width:100%;
+    line-height:0;
+    z-index:2;
+}
+
+.custom-wave svg{
+    display:block;
+    width:100%;
+    height:95px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding:40px 10%;
+}
+
+.features{
+    text-align:center;
+}
+
+/* =========================
+   PROJECTS GRID SECTION
+========================= */
+
+.projects-section{
+    width:100%;
+    padding:100px 8%;
+    background:#f5f5f5;
+}
+
+.projects-container{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.section-title{
+    font-size:60px;
+    color:#00255b;
+    margin-bottom:60px;
+    font-weight:900;
+    text-align:center;
+}
+
+.section-subtitle{
+    text-align:center;
+    font-size:20px;
+    color:#666;
+    margin-bottom:60px;
+}
+
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:40px;
+}
+
+.project-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    transition:all 0.3s ease;
+    display:flex;
+    flex-direction:column;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.project-image{
+    width:100%;
+    height:200px;
+    background:linear-gradient(135deg, #2f80ed 0%, #00c9ff 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+    color:white;
+}
+
+.project-content{
+    padding:30px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.project-category{
+    display:inline-block;
+    background:#2f80ed;
+    color:white;
+    padding:8px 15px;
+    border-radius:8px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:15px;
+    width:fit-content;
+    text-transform:uppercase;
+}
+
+.project-title{
+    font-size:22px;
+    font-weight:900;
+    color:#00255b;
+    margin-bottom:10px;
+}
+
+.project-description{
+    color:#666;
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:20px;
+    flex:1;
+}
+
+.project-meta{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+    font-size:14px;
+    color:#999;
+}
+
+.project-meta span{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.project-meta i{
+    color:#2f80ed;
+}
+
+.project-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.project-btn{
+    flex:1;
+    padding:12px 20px;
+    background:#f0f0f0;
+    color:#2f80ed;
+    border:2px solid #2f80ed;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all 0.3s;
+    text-decoration:none;
+    text-align:center;
+    display:inline-block;
+    font-size:14px;
+}
+
+.project-btn:hover{
+    background:#2f80ed;
+    color:white;
+}
+
+/* =========================
+   FILTER SECTION
+========================= */
+
+.filter-section{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.filter-buttons{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.filter-btn{
+    padding:12px 25px;
+    background:white;
+    color:#2f80ed;
+    border:2px solid #2f80ed;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all 0.3s;
+    font-size:16px;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#2f80ed;
+    color:white;
+}
+
+/* =========================
+   STATS SECTION
+========================= */
+
+.stats-section{
+    width:100%;
+    padding:80px 5%;
+    background:#f5f5f5;
+}
+
+.stats-container{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.stat-box{
+    flex:1;
+    min-width:220px;
+    text-align:center;
+}
+
+.circle{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto;
+
+    font-size:50px;
+    font-weight:bold;
+}
+
+.circle.blue{
+    background:#dfe9f7;
+    color:#2f80ed;
+}
+
+.circle.yellow{
+    background:#f6f0d9;
+    color:#f2c319;
+}
+
+.circle.cyan{
+    background:#dff4f4;
+    color:#47c7c7;
+}
+
+.stat-box p{
+    margin-top:20px;
+    font-size:18px;
+    line-height:1.6;
+    color:#1f3558;
+    font-weight:600;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+    .hero{
+        padding-left:30px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .section{
+        padding:40px 5%;
+    }
+
+    .projects-section{
+        padding:60px 5%;
+    }
+
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:40px;
+    }
+
+    .filter-buttons{
+        gap:10px;
+    }
+
+    .filter-btn{
+        padding:10px 15px;
+        font-size:14px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Logo -->
+<div class="logo-transparent">
+    <img src="444.png" alt="Logo">
+</div>
+
+<!-- =========================
+     HERO SECTION
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Community Projects
+        </h1>
+
+        <p>
+            Explore amazing robotics, AI, and technology projects created by our RoboLearn community
+        </p>
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn blue-btn">
+                View Projects
+            </a>
+
+            <a href="upload-project" class="btn yellow-btn">
+                Upload Project
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="custom-wave">
+
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        <path fill="#f5f5f5"
+        d="
+        M0,40
+        C80,90 160,0 240,40
+        C320,80 400,0 480,40
+        C560,80 640,0 720,40
+        C800,80 880,0 960,40
+        C1040,80 1120,0 1200,40
+        C1280,80 1360,0 1440,40
+        L1440,120
+        L0,120
+        Z">
+        </path>
+
+        </svg>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FILTER SECTION
+========================= -->
+
+<section class="section">
+
+    <div class="filter-section">
+
+        <h3 style="margin-bottom:20px; color:#00255b; font-size:24px;">Filter by Category</h3>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('robotics')">Robotics</button>
+            <button class="filter-btn" onclick="filterProjects('ai')">AI</button>
+            <button class="filter-btn" onclick="filterProjects('drone')">Drone</button>
+            <button class="filter-btn" onclick="filterProjects('coding')">Coding</button>
+            <button class="filter-btn" onclick="filterProjects('iot')">IoT</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     PROJECTS SECTION
+========================= -->
+
+<section class="projects-section" id="projects">
+
+    <div class="projects-container">
+
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Check out these amazing projects from our community</p>
+
+        <div class="projects-grid" id="projectsGrid">
+
+            <!-- Robotics Project 1 -->
+            <div class="project-card" data-category="robotics">
+                <div class="project-image">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-category">Robotics</span>
+                    <h3 class="project-title">Line Following Robot</h3>
+                    <p class="project-description">An autonomous robot that uses sensors to follow a predefined path with obstacle detection capabilities.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user"></i> Tech Team</span>
+                        <span><i class="fas fa-eye"></i> 234 views</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#" class="project-btn">View</a>
+                        <a href="#" class="project-btn">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Project 1 -->
+            <div class="project-card" data-category="ai">
+                <div class="project-image">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-category">AI</span>
+                    <h3 class="project-title">Image Recognition</h3>
+                    <p class="project-description">Machine learning model for real-time object detection and classification using deep learning techniques.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user"></i> AI Squad</span>
+                        <span><i class="fas fa-eye"></i> 456 views</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#" class="project-btn">View</a>
+                        <a href="#" class="project-btn">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drone Project 1 -->
+            <div class="project-card" data-category="drone">
+                <div class="project-image">
+                    <i class="fas fa-helicopter"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-category">Drone</span>
+                    <h3 class="project-title">Quadcopter Control System</h3>
+                    <p class="project-description">Advanced drone with GPS navigation, live video streaming, and autonomous flight capabilities.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user"></i> Sky Explorers</span>
+                        <span><i class="fas fa-eye"></i> 789 views</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#" class="project-btn">View</a>
+                        <a href="#" class="project-btn">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coding Project 1 -->
+            <div class="project-card" data-category="coding">
+                <div class="project-image">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-category">Coding</span>
+                    <h3 class="project-title">Web Application</h3>
+                    <p class="project-description">Full-stack web application with React frontend and Node.js backend for project management.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user"></i> Code Warriors</span>
+                        <span><i class="fas fa-eye"></i> 567 views</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#" class="project-btn">View</a>
+                        <a href="#" class="project-btn">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IoT Project 1 -->
+            <div class="project-card" data-category="iot">
+                <div class="project-image">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-category">IoT</span>
+                    <h3 class="project-title">Smart Home System</h3>
+                    <p class="project-description">IoT-based home automation system with smart lighting, temperature control, and security features.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user"></i> IoT Innovators</span>
+                        <span><i class="fas fa-eye"></i> 432 views</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#" class="project-btn">View</a>
+                        <a href="#" class="project-btn">Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Robotics Project 2 -->
+            <div class="project-card" data-category="robotics">
+                <div class="project-image">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <div class="project-content">
+                    <span class="project-category">Robotics</span>
+                    <h3 class="project-title">Robotic Arm</h3>
+                    <p class="project-description">6-axis robotic arm with precision control for industrial applications and research purposes.</p>
+                    <div class="project-meta">
+                        <span><i class="fas fa-user"></i> Automation Lab</span>
+                        <span><i class="fas fa-eye"></i> 345 views</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="#" class="project-btn">View</a>
+                        <a href="#" class="project-btn">Code</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     STATS SECTION
+========================= -->
+
+<section class="stats-section">
+
+    <div class="stats-container">
+
+        <!-- BOX 1 -->
+        <div class="stat-box">
+            <div class="circle blue">
+                6
+            </div>
+            <p>Projects Uploaded</p>
+        </div>
+
+        <!-- BOX 2 -->
+        <div class="stat-box">
+            <div class="circle yellow">
+                5
+            </div>
+            <p>Active Teams</p>
+        </div>
+
+        <!-- BOX 3 -->
+        <div class="stat-box">
+            <div class="circle cyan">
+                3823
+            </div>
+            <p>Total Views</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Font Awesome for Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+    function filterProjects(category) {
+        const cards = document.querySelectorAll('.project-card');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        // Update button styles
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Filter cards
+        cards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                }, 10);
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

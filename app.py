@@ -70,6 +70,12 @@ def serve_images(filename):
     images_path = os.path.join(BASE_DIR, 'images')
     return send_from_directory(images_path, filename)
 
+@app.route('/contact-page/<path:filename>')
+def serve_contact_assets(filename):
+    """Serve contact page assets"""
+    contact_path = os.path.join(BASE_DIR, 'contact-page')
+    return send_from_directory(contact_path, filename)
+
 # ==================== PAGES ROUTES ====================
 @app.route('/', methods=['GET'])
 def home():

@@ -1,173 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Login - RoboLearn</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Robo Learn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/contact-page/style.css" />
 </head>
 <body>
-    <!-- Animated Background Particles -->
-    <div class="particles-container" id="particlesContainer"></div>
+    <!-- Background glow layers -->
+    <div class="background-glow"></div>
+    <div class="background-glow second-glow"></div>
 
-    <!-- Main Container -->
-    <div class="login-container">
-        <!-- Logo Section -->
-        <div class="logo-section">
-            <div class="logo-icon">
-                <i class="fas fa-robot"></i>
-            </div>
-            <h1>RoboLearn</h1>
-            <p>Master Technology & Innovation</p>
-        </div>
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
 
-        <!-- Login Card -->
-        <div class="login-card">
-            <!-- Header -->
-            <div class="card-header">
-                <h2>Welcome Back</h2>
-                <p>Sign in to your account to continue learning</p>
-            </div>
-
-            <!-- Login Tabs -->
-            <div class="login-tabs">
-                <button class="tab-btn active" type="button" data-tab="email-tab">
-                    <i class="fas fa-envelope"></i> Email
-                </button>
-                <button class="tab-btn" type="button" data-tab="phone-tab">
-                    <i class="fas fa-phone"></i> Phone
-                </button>
-            </div>
-
-            <!-- Login Form -->
-            <form id="loginForm" class="login-form">
-                <!-- Email Tab -->
-                <div id="email-tab" class="login-tab active">
-                    <div class="form-group">
-                        <label for="emailInput">Email Address</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-envelope"></i>
-                            <input 
-                                type="email" 
-                                id="emailInput" 
-                                name="emailInput" 
-                                placeholder="Enter your email"
-                            >
-                        </div>
-                        <span class="error-message" id="emailInputError"></span>
-                    </div>
-                </div>
-
-                <!-- Phone Tab -->
-                <div id="phone-tab" class="login-tab">
-                    <div class="form-group">
-                        <label for="phoneInput">Phone Number</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-phone"></i>
-                            <input 
-                                type="tel" 
-                                id="phoneInput" 
-                                name="phoneInput" 
-                                placeholder="Enter your phone number"
-                            >
-                        </div>
-                        <span class="error-message" id="phoneInputError"></span>
-                    </div>
-                </div>
-
-                <!-- Password Field (Common) -->
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-lock"></i>
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            placeholder="Enter your password"
-                            required
-                        >
-                        <!-- Show/Hide Password Button -->
-                        <button type="button" class="toggle-password" id="togglePassword">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <span class="error-message" id="passwordError"></span>
-                </div>
-
-                <!-- Remember Me & Forgot Password -->
-                <div class="form-footer">
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" id="rememberMe" name="rememberMe">
-                        <label for="rememberMe">Remember me</label>
-                    </div>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
-                </div>
-
-                <!-- Login Button -->
-                <button type="submit" class="login-btn">
-                    <span class="btn-text">Sign In</span>
-                    <i class="fas fa-arrow-right"></i>
-                    <span class="loading-spinner"></span>
-                </button>
-
-                <!-- Success Message -->
-                <div class="success-message" id="successMessage">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Login successful! Redirecting...</span>
-                </div>
-            </form>
-
-            <!-- Divider -->
-            <div class="divider">
-                <span>Or continue with</span>
-            </div>
-
-            <!-- Social Login Buttons -->
-            <div class="social-login">
-                <button class="social-btn google-btn" type="button" title="Login with Google">
-                    <i class="fab fa-google"></i>
-                    <span>Google</span>
-                </button>
-                <button class="social-btn facebook-btn" type="button" title="Login with Facebook">
-                    <i class="fab fa-facebook"></i>
-                    <span>Facebook</span>
-                </button>
-                <button class="social-btn github-btn" type="button" title="Login with GitHub">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </button>
-            </div>
-
-            <!-- Sign Up Link -->
-            <div class="signup-link">
-                <p>Don't have an account? <a href="register.html">Create one</a></p>
-            </div>
-        </div>
-
-        <!-- Navigation to Main Pages -->
-        <div style="text-align: center; margin: 30px 0;">
-            <a href="courses.html" class="btn-link" style="margin: 0 10px; background: linear-gradient(135deg, #0099ff, #00d4ff); padding: 10px 20px; border-radius: 8px; text-decoration: none; color: white; font-weight: 600; display: inline-block; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0, 153, 255, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                <i class="fas fa-graduation-cap"></i> Explore Courses
-            </a>
-            <a href="robotics.html" class="btn-link" style="margin: 0 10px;">
-                <i class="fas fa-robot"></i> Robotics
-            </a>
-            <a href="robo.html" class="btn-link" style="margin: 0 10px;">
-                <i class="fas fa-project-diagram"></i> Projects
-            </a>
-        </div>
-
-        <!-- Footer Text -->
-        <div class="footer-text">
-            <p>&copy; 2026 RoboLearn. All rights reserved.</p>
-        </div>
+    <!-- Navigation -->
+    <div style="padding: 15px 20px; background: rgba(45, 212, 247, 0.1); text-align: center; margin-bottom: 20px;">
+        <a href="/" style="color: #2dd4f7; text-decoration: none; padding: 8px 15px; background: rgba(45, 212, 247, 0.2); border-radius: 8px; font-weight: bold; display: inline-block; transition: all 0.3s;">← Back to Home</a>
     </div>
 
-    <!-- Custom JavaScript -->
-    <script src="login.js"></script>
+    <main class="contact-page">
+        <section class="intro-card">
+            <div class="badge">Contact Robo Learn</div>
+            <h1>Contact Robo Learn</h1>
+            <p>Feel free to contact us anytime. We are ready to help you with robotics, AI, and future technology.</p>
+        </section>
+
+        <section class="contact-cards">
+            <!-- Email Form Card -->
+            <article class="contact-card mail-card">
+                <div class="card-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h2>Mail Me</h2>
+                <p>Send your message directly to our official email and we will reply promptly.</p>
+                <div class="contact-info">
+                    <label for="emailText"><strong>Email:</strong></label>
+                    <div class="copy-row">
+                        <input type="text" id="emailText" readonly value="soumyendubikashgayen@gmail.com" />
+                        <button type="button" class="copy-btn" data-copy="soumyendubikashgayen@gmail.com" data-target="emailText">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Email Form with Full Validation -->
+                <form id="emailForm" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <input 
+                            type="text" 
+                            id="nameInput" 
+                            class="form-input" 
+                            placeholder="Your Full Name" 
+                            required 
+                            autocomplete="name"
+                        />
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="email" 
+                            id="emailInput" 
+                            class="form-input" 
+                            placeholder="Your Email Address" 
+                            required 
+                            autocomplete="email"
+                        />
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea 
+                            id="messageInput" 
+                            class="form-input" 
+                            placeholder="Your Message" 
+                            rows="4" 
+                            required
+                        ></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+
+                    <button type="submit" class="contact-button mail-submit-btn" id="mailButton">
+                        <span>Mail Me</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </article>
+
+            <!-- WhatsApp Card -->
+            <article class="contact-card whatsapp-card">
+                <div class="card-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h2>WhatsApp</h2>
+                <p>Chat with us instantly on WhatsApp for quick help and support.</p>
+                <div class="contact-info">
+                    <label for="whatsappText"><strong>WhatsApp:</strong></label>
+                    <div class="copy-row">
+                        <input type="text" id="whatsappText" readonly value="7029709096" />
+                        <button type="button" class="copy-btn" data-copy="7029709096" data-target="whatsappText">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="contact-button whatsapp-btn" id="whatsappButton">
+                    <span>WhatsApp</span>
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+            </article>
+        </section>
+
+        <footer class="page-footer">
+            <p>Robo Learn • Dark mode design • Premium startup contact page</p>
+        </footer>
+    </main>
+
+    <script src="/contact-page/script.js"></script>
 </body>
 </html>
